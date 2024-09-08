@@ -1,10 +1,37 @@
-import { Form, NavLink, useLoaderData } from "react-router-dom";
+import { useState } from "react";
+import { Form, NavLink, useLoaderData, useParams, useNavigate } from "react-router-dom";
+import { setUserData } from "../../API/lottery";
 
 export const SingleUserData = () => {
   document.title = "user-details";
   const userData = useLoaderData();
+  const navigate = useNavigate();
   const { data } = userData;
-  //   console.log(data);
+  const { id } = useParams();
+  
+  const [userName, setUserName] = useState(data.data.user.name);
+  const [userEmail, setUserEmail] = useState(data.data.user.email);
+  const [userMobile, setUserMobile] = useState(data.data.user.mobile_No);
+
+  const handleFormSubmit = async (e) => {
+    try {
+      e.preventDefault();
+
+      const payload = {
+        name: userName,
+        email : userEmail,
+        mobile_No : userMobile
+      };
+
+      console.log("payload", payload);
+      
+
+      await setUserData(id , payload);
+      navigate("/user");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -642,7 +669,7 @@ export const SingleUserData = () => {
                     <div className="card">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div>
-                          <h2 className="text-bold-700 mb-0">{data.balance}</h2>
+                          <h2 className="text-bold-700 mb-0">{data.data.balance}</h2>
                           <p>Balance</p>
                         </div>
                         <div className="avatar bg-rgba-primary p-50 m-0">
@@ -658,7 +685,7 @@ export const SingleUserData = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div>
                           <h2 className="text-bold-700 mb-0">
-                            {data.totalDeposit}
+                            {data.data.totalDeposit}
                           </h2>
                           <p>deposits</p>
                         </div>
@@ -677,7 +704,7 @@ export const SingleUserData = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div>
                           <h2 className="text-bold-700 mb-0">
-                            {data.totalwithdraw}
+                            {data.data.totalwithdraw}
                           </h2>
                           <p>Wiithdraws</p>
                         </div>
@@ -695,7 +722,7 @@ export const SingleUserData = () => {
                     <div className="card">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div>
-                          <h2 className="text-bold-700 mb-0">13</h2>
+                          <h2 className="text-bold-700 mb-0">{data.data.ticket}</h2>
                           <p>Tickets</p>
                         </div>
                         <div className="avatar bg-rgba-warning p-50 m-0">
@@ -722,8 +749,7 @@ export const SingleUserData = () => {
                       <div className="card-content">
                         <div className="card-body">
                           <Form
-                            method="POST"
-                            action={`/user/${data.user._id}`}
+                            onSubmit={handleFormSubmit}
                             className="form form-horizontal"
                           >
                             <div className="form-body">
@@ -741,7 +767,8 @@ export const SingleUserData = () => {
                                           className="form-control"
                                           name="name"
                                           placeholder="First Name"
-                                          defaultValue={data.user.name}
+                                          defaultValue={userName}
+                                          onChange={(e) => setUserName(e.target.value)}
                                         />
                                         <div className="form-control-position">
                                           <i className="feather icon-user"></i>
@@ -784,7 +811,8 @@ export const SingleUserData = () => {
                                           className="form-control"
                                           name="email"
                                           placeholder="Mobile"
-                                          defaultValue={data.user.email}
+                                          defaultValue={userEmail}
+                                          onChange={(e) => setUserEmail(e.target.value)}
                                         />
                                         <div className="form-control-position">
                                           <i className="feather icon-mail"></i>
@@ -806,7 +834,8 @@ export const SingleUserData = () => {
                                           className="form-control"
                                           name="mobile_No"
                                           placeholder="Mobile No"
-                                          defaultValue={data.user.mobile_No}
+                                          defaultValue={userMobile}
+                                          onChange={(e) => setUserMobile(e.target.value)}
                                         />
                                         <div className="form-control-position">
                                           <i className="feather icon-phone"></i>

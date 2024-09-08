@@ -19,7 +19,7 @@ export const Login = () => {
       let res = await loginAuth(loginData);
       localStorage.setItem("user_details", JSON.stringify(res.data.data));
       localStorage.setItem("token", res.data.token);
-      // navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
