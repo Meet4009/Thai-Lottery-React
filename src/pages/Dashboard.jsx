@@ -1,12 +1,13 @@
-import { NavLink, useLoaderData } from "react-router-dom";
-// import { dashboard } from "../API/dashboard_user";
+import { NavLink} from "react-router-dom";
+import { dashboard } from "../API/lottery";
+import { useState } from "react";
 
 export const Dashboard = () => {
-  const Apidata = useLoaderData();
-  const { data } = Apidata;
-  // console.log(data);
-
-  // const data = dashboard();
+  const [data, setData] = useState({})
+  useEffect(async() => {
+    let res = await dashboard()
+    setData(res)
+  }, [])
 
   return (
     <>

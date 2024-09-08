@@ -30,7 +30,6 @@ const Router = createBrowserRouter([
             <Dashboard />
           </ProtectedRoute>
         ),
-        loader: dashboard,
       },
       {
         path: "/user",
