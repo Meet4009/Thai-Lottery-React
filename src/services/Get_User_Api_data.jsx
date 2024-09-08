@@ -1,4 +1,4 @@
-import { getUserData } from "../API/GetUserData";
+import { getUserData } from "../API/lottery";
 
 export const userApiData = async () => {
   try {

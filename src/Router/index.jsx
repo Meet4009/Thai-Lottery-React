@@ -1,54 +1,80 @@
 import { createBrowserRouter } from "react-router-dom";
-import { GetSingleUserDetails } from "../API/GetSingleUserData";
+import { getSingleUserDetails } from "../API/lottery";
 import { SingleUserData } from "../components/UI/ShowSingleUserData";
 import { AllLotteries } from "../pages/AllLotteries";
 import { AllWinner } from "../pages/AllWinner";
 import { ChooseWinner } from "../pages/ChooseToWinner";
 import { Dashboard } from "../pages/Dashboard";
-// import { Login } from "../pages/Login";
+import { Login } from "../pages/Login";
 import { User } from "../pages/User";
 import { lotteryApiData } from "../services/get_all_lottery_data";
 import { userApiData } from "../services/Get_User_Api_data";
 import { contactData } from "../services/User_Contact_details";
-// import { dashboard } from "../API/dashboard_user";
+import { dashboard } from "../API/lottery";
+import ProtectedRoute from "./ProtectedRoute";
+
 
 const Router = createBrowserRouter([
   {
     path: "/",
     // element: <Login />,
     children: [
-      // {
-      //   path: "/",
-      //   element: <Login />,
-      // },
+      {
+        path: "/login",
+        element: <Login />,
+      },
       {
         path: "/",
-        element: <Dashboard />,
-        // loader: dashboard,
+        element: (
+          <ProtectedRoute>
+            <Dashboard />
+          </ProtectedRoute>
+        ),
+        loader: dashboard,
       },
       {
         path: "/user",
-        element: <User />,
+        element: (
+          <ProtectedRoute>
+            <User />
+          </ProtectedRoute>
+        ),
         loader: userApiData,
       },
       {
         path: "/user/:id",
-        element: <SingleUserData />,
-        loader: GetSingleUserDetails,
+        element: (
+          <ProtectedRoute>
+            <SingleUserData />
+          </ProtectedRoute>
+        ),
+        loader: getSingleUserDetails,
         action: contactData,
       },
       {
         path: "/alllotteries",
-        element: <AllLotteries />,
+        element: (
+          <ProtectedRoute>
+            <AllLotteries />
+          </ProtectedRoute>
+        ),
         loader: lotteryApiData,
       },
       {
         path: "/allwinner",
-        element: <AllWinner />,
+        element: (
+          <ProtectedRoute>
+            <AllWinner />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "/choosewinner",
-        element: <ChooseWinner />,
+        element: (
+          <ProtectedRoute>
+            <ChooseWinner />
+          </ProtectedRoute>
+        ),
       },
     ],
   },
