@@ -11,7 +11,7 @@ import { AllLotteries } from "./pages/AllLotteries";
 import { lotteryApiData } from "./services/get_all_lottery_data";
 import { AllWinner } from "./pages/AllWinner";
 import { ChooseWinner } from "./pages/ChooseToWinner";
-// import { Login } from "./pages/Login";
+import { Login } from "./pages/Login";
 // import { LoginUser } from "./services/Login_user";
 // import { Login } from "./pages/Login";
 
@@ -21,10 +21,10 @@ export const App = () => {
       path: "/",
       // element: <Login />,
       children: [
-        // {
-        //   path: "/",
-        //   element: <Login />,
-        // },
+        {
+          path: "/",
+          element: <Login />,
+        },
         {
           path: "/",
           element: <Dashboard />,
