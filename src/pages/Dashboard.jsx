@@ -1,8 +1,11 @@
 import { NavLink, useLoaderData } from "react-router-dom";
+// import { dashboard } from "../API/dashboard_user";
 
 export const Dashboard = () => {
   const Apidata = useLoaderData();
   const { data } = Apidata;
+
+  // const data = dashboard();
 
   return (
     <>
