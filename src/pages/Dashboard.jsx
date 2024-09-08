@@ -4,6 +4,7 @@ import { NavLink, useLoaderData } from "react-router-dom";
 export const Dashboard = () => {
   const Apidata = useLoaderData();
   const { data } = Apidata;
+  // console.log(data);
 
   // const data = dashboard();
 
@@ -642,7 +643,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.totalUsers}
+                            {data.data.totalUsers}
                           </h2>
                           <br />
                           <p>Total User</p>
@@ -660,7 +661,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.activeUsers}
+                            {data.data.activeUsers}
                           </h2>
                           <br />
                           <p>Active User</p>
@@ -712,7 +713,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.soldTicket}
+                            {data.data.soldTicket}
                           </h2>
                           <br />
                           <p>Sold Ticket</p>
@@ -782,7 +783,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.totalDeposits}
+                            {data.data.totalDeposits}
                           </h2>
                           <br />
                           <p>Total Deposited</p>
@@ -800,7 +801,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.approvedDeposit}
+                            {data.data.approvedDeposit}
                           </h2>
                           <br />
                           <p>Approve deposits</p>
@@ -820,7 +821,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.rejectedDeposit}
+                            {data.data.rejectedDeposit}
                           </h2>
                           <br />
                           <p>Rejected Deposits</p>
@@ -838,7 +839,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.pendingDeposit}
+                            {data.data.pendingDeposit}
                           </h2>
                           <br />
                           <p>Pending Deposits</p>
@@ -858,7 +859,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.totalWithdrawals}
+                            {data.data.totalWithdrawals}
                           </h2>
                           <br />
                           <p>Total Withdrawl</p>
@@ -876,7 +877,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.approvedWithdrawal}
+                            {data.data.approvedWithdrawal}
                           </h2>
                           <br />
                           <p>Approve Withdrawal</p>
@@ -896,7 +897,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.rejectedWithdrawal}
+                            {data.data.rejectedWithdrawal}
                           </h2>
                           <br />
                           <p>Rejected Withdrawals</p>
@@ -914,7 +915,7 @@ export const Dashboard = () => {
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
                           <h2 className="text-bold-700 mb-0">
-                            {data.pendingWithdraw}
+                            {data.data.pendingWithdraw}
                           </h2>
                           <br />
                           <p>Pending Withdrawals</p>
