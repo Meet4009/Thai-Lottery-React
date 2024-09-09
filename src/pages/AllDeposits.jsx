@@ -16,7 +16,7 @@ export const AllDeposits = () => {
 
     mountApi();
   }, []);
-  console.log(data);
+  // console.log(data);
 
   return (
     <>
@@ -36,6 +36,7 @@ export const AllDeposits = () => {
                           <table className="table zero-configuration text-center">
                             <thead>
                               <tr>
+                                <th>No.</th>
                                 <th>User</th>
                                 <th>Transaction ID</th>
                                 <th>Mobile no.</th>
@@ -45,157 +46,15 @@ export const AllDeposits = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              {/* <tr>
-                                <td>
-                                  User1
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#pendingDeposite"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User3
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Rejected</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User3
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Approved</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User4
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Rejected</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User5
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Approved</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User6
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Rejected</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User7
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Approved</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User8
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Rejected</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User9
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Approved</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User10
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Rejected</td>
-                              </tr>
-                              <tr>
-                                <td>
-                                  User11
-                                  <br />
-                                  meet@gmail.com
-                                </td>
-                                <td>156546fef4564</td>
-                                <td>7410852963</td>
-                                <td>2024-06-05</td>
-                                <td>$100.00</td>
-                                <td>Approved</td>
-                              </tr> */}
-                              {data.length !== 0
-                                ? data.map((curDepo) => {
-                                    return (
-                                      <AllDepositsData
-                                        key={curDepo._id}
-                                        curDepo={curDepo}
-                                      />
-                                    );
-                                  })
-                                : ""}
+                              {data.map((curDepo, index) => {
+                                return (
+                                  <AllDepositsData
+                                    key={curDepo._id}
+                                    curDepo={curDepo}
+                                    no={index}
+                                  />
+                                );
+                              })}
                             </tbody>
                           </table>
                         </div>
@@ -209,7 +68,7 @@ export const AllDeposits = () => {
           </div>
         </div>
       </div>
-      <div
+      {/* <div
         className="modal fade text-left"
         id="pendingDeposite"
         // tabindex="-1"
@@ -287,7 +146,7 @@ export const AllDeposits = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 };

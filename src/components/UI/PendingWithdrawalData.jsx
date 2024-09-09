@@ -1,8 +1,7 @@
-export const PendingDepositeData = ({ curEle, no }) => {
-  //   console.log(curEle);
-  const { user_id } = curEle;
+export const PendingWithdrawalsData = ({ curPending, no }) => {
+  // console.log(curPending);
 
-  const date = new Date(curEle.createdAt).toLocaleDateString("en-GB", {
+  const date = new Date(curPending.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
@@ -12,14 +11,14 @@ export const PendingDepositeData = ({ curEle, no }) => {
     <tr>
       <td>{no + 1}</td>
       <td>
-        {user_id.name}
+        {curPending.user_id.name}
         <br />
-        {user_id.email}
+        {curPending.user_id.email}
       </td>
-      <td>{curEle.UTR}</td>
-      <td>{user_id.mobile_No}</td>
+      <td>156546fef4564</td>
+      <td>{curPending.user_id.mobile_No}</td>
       <td>{date}</td>
-      <td>{curEle.amount}</td>
+      <td>{curPending.amount}</td>
       <td>
         <button
           type="button"

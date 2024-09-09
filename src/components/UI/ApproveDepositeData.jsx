@@ -1,6 +1,6 @@
-export const ApproveDepositeData = ({ curEle }) => {
+export const ApproveDepositeData = ({ curEle, no }) => {
   const { user_id } = curEle;
-  console.log(curEle);
+  // console.log(curEle);
 
   const date = new Date(curEle.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
@@ -10,6 +10,7 @@ export const ApproveDepositeData = ({ curEle }) => {
 
   return (
     <tr>
+      <td>{no + 1}</td>
       <td>
         {user_id.name}
         <br />

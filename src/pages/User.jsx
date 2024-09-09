@@ -49,6 +49,7 @@ export const User = () => {
                             <table className="table zero-configuration text-center">
                               <thead>
                                 <tr>
+                                  <th>No.</th>
                                   <th>Name</th>
                                   <th>Email-Mobile</th>
                                   <th>Country</th>
@@ -58,12 +59,12 @@ export const User = () => {
                                 </tr>
                               </thead>
                               <tbody>
-                                {data.map((curUser) => {
-                                  console.log(curUser);
+                                {data.map((curUser, index) => {
                                   return (
                                     <ShowUser
                                       key={curUser._id}
                                       curUser={curUser}
+                                      no={index}
                                     />
                                   );
                                 })}

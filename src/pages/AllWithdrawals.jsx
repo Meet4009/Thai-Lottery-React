@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getRejectedDeposite } from "../API/payment";
-import { RejectedDepositeData } from "../components/UI/RejectedDepositeData";
+import { getAllWithdrawals } from "../API/payment";
+import { AllWithdrawalsData } from "../components/UI/AllWithdrawalsData";
 
-export const RejectedDeposits = () => {
+export const AllWithdrawals = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     const mountApi = async () => {
       try {
-        let res = await getRejectedDeposite();
+        let res = await getAllWithdrawals();
         setData(res.data.data);
       } catch (error) {
         console.log(error);
@@ -17,7 +17,6 @@ export const RejectedDeposits = () => {
     mountApi();
   }, []);
   //   console.log(data);
-
   return (
     <div className="app-content content">
       <div className="content-overlay"></div>
@@ -37,19 +36,20 @@ export const RejectedDeposits = () => {
                             <tr>
                               <th>No.</th>
                               <th>User</th>
-                              <th>Transaction ID</th>
+                              <th>UPI ID</th>
                               <th>Mobile no.</th>
                               <th>Date</th>
                               <th>Amount</th>
                               <th>Status</th>
+                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {data.map((curEle, index) => {
+                            {data.map((curWithdraw, index) => {
                               return (
-                                <RejectedDepositeData
-                                  key={curEle._id}
-                                  curEle={curEle}
+                                <AllWithdrawalsData
+                                  key={curWithdraw._id}
+                                  curWithdraw={curWithdraw}
                                   no={index}
                                 />
                               );

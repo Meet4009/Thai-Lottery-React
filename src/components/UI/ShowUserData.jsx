@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export const ShowUser = ({ curUser }) => {
+export const ShowUser = ({ curUser, no }) => {
   const date = new Date(curUser.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "2-digit",
@@ -25,6 +25,7 @@ export const ShowUser = ({ curUser }) => {
   return (
     <>
       <tr>
+        <td>{no + 1}</td>
         <td>{name}</td>
         <td>
           {email}
@@ -33,7 +34,7 @@ export const ShowUser = ({ curUser }) => {
         </td>
         <td>{country}</td>
         <td>{date}</td>
-        <td>{`${balance}`}</td>
+        <td>{balance}</td>
         <td>
           <NavLink to={`/user/${_id}`}>
             <button type="button" className="btn mr-1 mb-1 btn-primary btn-sm">

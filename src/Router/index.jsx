@@ -17,6 +17,10 @@ import { Header } from "../components/layout/Header";
 import { ApprovedDeposite } from "../pages/ApprovedDeposite";
 import { RejectedDeposits } from "../pages/RejectedDeposits";
 import { AllDeposits } from "../pages/AllDeposits";
+import { PendingWithdrawals } from "../pages/PendingWithdrawals";
+import { ApprovedWithdrawals } from "../pages/ApprovedWithdrawals";
+import { RejectedWithdrawals } from "../pages/RejectedWithdrawals";
+import { AllWithdrawals } from "../pages/AllWithdrawals";
 
 const Router = createBrowserRouter([
   {
@@ -119,6 +123,44 @@ const Router = createBrowserRouter([
           <ProtectedRoute>
             <Header name="All Deposits" />
             <AllDeposits />
+          </ProtectedRoute>
+        ),
+      },
+
+      // Dropdown menu "WITHDRAWALS"
+      {
+        path: "/pendingwithdrawals",
+        element: (
+          <ProtectedRoute>
+            <Header name="Pending withdrawals" />
+            <PendingWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/approvedwithdrawals",
+        element: (
+          <ProtectedRoute>
+            <Header name="Approved withdrawals" />
+            <ApprovedWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/rejectedwithdraw",
+        element: (
+          <ProtectedRoute>
+            <Header name="Rejected withdrawals" />
+            <RejectedWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/allwithdraw",
+        element: (
+          <ProtectedRoute>
+            <Header name="All withdrawals" />
+            <AllWithdrawals />
           </ProtectedRoute>
         ),
       },

@@ -1,11 +1,12 @@
-export const RejectedDepositeData = ({ curEle }) => {
+export const RejectedDepositeData = ({ curEle, no }) => {
   const date = new Date(curEle.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   });
   return (
-    <tr >
+    <tr>
+      <td>{no + 1}</td>
       <td>
         {curEle.user_id.name}
         <br />

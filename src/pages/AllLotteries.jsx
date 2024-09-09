@@ -2,6 +2,7 @@
 // import { getLotteriesData } from "../API/GetAllLotteries";
 import { useEffect, useState } from "react";
 import { getLotteriesData } from "../API/lottery";
+import { ShowLotteryDraw } from "../components/UI/ShowLotteryDraw";
 
 export const AllLotteries = () => {
   document.title = "lotteries";
@@ -40,7 +41,7 @@ export const AllLotteries = () => {
   }, []);
 
   const { lotteryDraw } = data;
-  console.log(lotteryDraw);
+  // console.log(lotteryDraw);
 
   if (lotteryDraw === undefined) {
     return <h1>Loding...</h1>;
@@ -87,17 +88,25 @@ export const AllLotteries = () => {
                                 <td>8</td>
                                 <td>Active</td>
                               </tr> */}
-                              {lotteryDraw.map((curEle) => {
+                              {lotteryDraw.map((curEle, index) => {
                                 return (
+                                  <ShowLotteryDraw
+                                    key={curEle._id}
+                                    curEle={curEle}
+                                    no={index}
+                                  />
+                                );
+
+                                /* return (
                                   <tr key={curEle._id}>
-                                    <td>{curEle.__v + 1}</td>
+                                    <td>{index + 1}</td>
                                     <td>{curEle.lottery_id.name}</td>
                                     <td>{curEle.lottery_id.price}</td>
                                     <td>{curEle.drawDate}</td>
                                     <td>{curEle.lottery_id.totalDraw}</td>
                                     <td>{curEle.status}</td>
                                   </tr>
-                                );
+                                ); */
                               })}
                             </tbody>
                           </table>

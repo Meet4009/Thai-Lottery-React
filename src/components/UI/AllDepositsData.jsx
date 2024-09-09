@@ -1,4 +1,4 @@
-export const AllDepositsData = ({ curDepo }) => {
+export const AllDepositsData = ({ curDepo, no }) => {
   const date = new Date(curDepo.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "2-digit",
@@ -8,6 +8,7 @@ export const AllDepositsData = ({ curDepo }) => {
 
   return (
     <tr>
+      <td>{no + 1}</td>
       <td>
         {curDepo.user_id.name}
         <br />
