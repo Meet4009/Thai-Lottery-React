@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = ({ name }) => {
   return (
     <>
       {/* <!-- BEGIN: Header--> */}
@@ -19,7 +19,7 @@ export const Header = () => {
                   </li>
                 </ul>
                 <h1 className="brand-text mb-0 text-bold-700">
-                  <a href="/">Dashboard</a>
+                  <a href="/">{name}</a>
                 </h1>
               </div>
               <ul className="nav navbar-nav float-right">
@@ -99,7 +99,7 @@ export const Header = () => {
                               9 hours ago
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
@@ -125,7 +125,7 @@ export const Header = () => {
                               5 hour ago
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
@@ -151,7 +151,7 @@ export const Header = () => {
                               Today
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
@@ -177,7 +177,7 @@ export const Header = () => {
                               Last week
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
@@ -457,7 +457,7 @@ export const Header = () => {
         <div className="navbar-header">
           <ul className="nav navbar-nav flex-row">
             <li className="nav-item mr-auto">
-              <a className="navbar-brand" href="index.html">
+              <a className="navbar-brand" href="/">
                 <img
                   className="pl-50"
                   src="../app-assets/images/logo/thb_logo.svg"
@@ -492,7 +492,7 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="alllotteries.html">
+              <a href="/alllotteries">
                 <i className="fa-solid fa-ticket"></i>
                 <span className="menu-title" data-i18n="Chat">
                   All lotterys
@@ -500,7 +500,7 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="allwinner.html">
+              <a href="/allwinner">
                 <i className="fas fa-trophy"></i>
                 <span className="menu-title" data-i18n="Todo">
                   All Winner
@@ -508,7 +508,7 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="chooseWinner.html">
+              <a href="/choosewinner">
                 <i className="fas fa-users"></i>
                 <span className="menu-title" data-i18n="Calender">
                   Choose to winner
@@ -524,7 +524,7 @@ export const Header = () => {
               </a>
               <ul className="menu-content">
                 <li>
-                  <a href="pendingDeposite.html">
+                  <a href="/pendingdeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Shop">
                       Pending Diposite
@@ -532,7 +532,7 @@ export const Header = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="approvedDeposite.html">
+                  <a href="/approveddeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Details">
                       Approved Diposite
@@ -540,7 +540,7 @@ export const Header = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="rejectedDeposits.html">
+                  <a href="/rejecteddeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Wish List">
                       Rejected Diposite
@@ -548,7 +548,7 @@ export const Header = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="allDeposite.html">
+                  <a href="/alldeposits">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Checkout">
                       All Diposite

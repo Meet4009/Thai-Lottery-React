@@ -33,7 +33,7 @@ export const ShowUser = ({ curUser }) => {
         </td>
         <td>{country}</td>
         <td>{date}</td>
-        <td>{`$${balance}`}</td>
+        <td>{`${balance}`}</td>
         <td>
           <NavLink to={`/user/${_id}`}>
             <button type="button" className="btn mr-1 mb-1 btn-primary btn-sm">
