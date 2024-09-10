@@ -15,7 +15,6 @@ export const RejectedWithdrawals = () => {
 
     mountApi();
   }, []);
-  console.log(data);
 
   return (
     <div className="app-content content">
@@ -45,7 +44,6 @@ export const RejectedWithdrawals = () => {
                           </thead>
                           <tbody>
                             {data.map((curEle, index) => {
-                              console.log(curEle);
                               return (
                                 <tr key={curEle._id}>
                                   <td>{index + 1}</td>

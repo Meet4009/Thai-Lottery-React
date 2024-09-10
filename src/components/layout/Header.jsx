@@ -534,13 +534,13 @@ export const Header = ({ name }) => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#">
+              <a href="#" data-target="#deposite">
                 <i className="fas fa-plus-circle"></i>
                 <span className="menu-title" data-i18n="Ecommerce">
                   Diposite
                 </span>
               </a>
-              <ul className="menu-content">
+              <ul className="menu-content" id="deposite">
                 <li className={name === "Pending deposits" ? "active" : ""}>
                   <a href="/pendingdeposite">
                     <i className="feather icon-circle"></i>
@@ -576,13 +576,13 @@ export const Header = ({ name }) => {
               </ul>
             </li>
             <li className="nav-item">
-              <a href="#">
+              <a href="#" data-target="#withdraw">
                 <i className="fas fa-minus-circle"></i>
                 <span className="menu-title" data-i18n="Ecommerce">
                   withdrawals
                 </span>
               </a>
-              <ul className="menu-content">
+              <ul className="menu-content" id="withdraw">
                 <li className={name === "Pending withdrawals" ? "active" : ""}>
                   <a href="/pendingwithdrawals">
                     <i className="feather icon-circle"></i>

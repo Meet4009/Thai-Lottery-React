@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getChooseWinnerData } from "../API/lottery";
-import { setLoser } from "../API/payment";
+import { getWinnerSpace, setLoser, setWinner } from "../API/payment";
 
 export const ChooseWinner = () => {
   const [data, setData] = useState([]);
@@ -16,11 +16,13 @@ export const ChooseWinner = () => {
 
     mountApi();
   }, []);
-  console.log(data);
+  // console.log(data);
 
   // Modal
   const [selectRow, setSelectRow] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const [prices, setPrices] = useState([]);
+  const [selectedPrice, setSelecetdPrices] = useState([]);
   const handleActionClick = (row) => {
     setSelectRow(row);
     setShowModal(true);
@@ -34,6 +36,27 @@ export const ChooseWinner = () => {
       console.log(error);
     }
   };
+
+  // Winner button
+  const hadleWinnerBtn = async () => {
+    try {
+      let res = await getWinnerSpace(selectRow.lottery_draw_id);
+      setPrices(res.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleWinnerSpace = async (priceObj) => setSelecetdPrices(priceObj);
+
+  const handleWinnerConfirm = async () => {
+    let payload = {
+      lottery_price_id: selectedPrice._id,
+    };
+    await setWinner(selectRow._id, payload);
+  };
+
+  console.log(prices);
 
   if (data === undefined) {
     return true;
@@ -149,6 +172,7 @@ export const ChooseWinner = () => {
                   data-toggle="modal"
                   data-target="#winner"
                   data-dismiss="modal"
+                  onClick={hadleWinnerBtn}
                 >
                   Winner
                 </button>
@@ -181,7 +205,7 @@ export const ChooseWinner = () => {
           <div className="modal-content">
             <div className="modal-header bg-primary white">
               <h4 className="modal-title" id="myModalLabel160">
-                Ticket Number : 78946513215
+                Ticket Number : {selectRow.ticketNumber}
               </h4>
             </div>
             <div className="modal-body text-black mb-0">
@@ -197,67 +221,30 @@ export const ChooseWinner = () => {
                         <span>winning Price </span>
                         <span>Person </span>
                       </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>1st Price</span>
-                        <span>50L THB</span>
-                        <span>1</span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between ">
-                        <span>2nd Price</span>
-                        <span>20L THB</span>
-                        <span>1 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>3th Price</span>
-                        <span>10L THB</span>
-                        <span>1 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>4th Price</span>
-                        <span>1L THB</span>
-                        <span>7 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>5th Price</span>
-                        <span>80K THB</span>
-                        <span>90 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>6th Price</span>
-                        <span>40K THB</span>
-                        <span>100 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between ">
-                        <span>7th Price</span>
-                        <span>20K THB</span>
-                        <span>500 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>8th Price</span>
-                        <span>10K THB</span>
-                        <span>500 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>9th Price</span>
-                        <span>5K THB</span>
-                        <span>500 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>10th Price</span>
-                        <span>1k THB</span>
-                        <span>500 </span>
-                      </li>
-                      <li className="list-group-item d-flex justify-content-between">
-                        <span>11th Price</span>
-                        <span>500 THB</span>
-                        <span>500 </span>
-                      </li>
+                      {prices.map((curEle) => (
+                        <li
+                          className="list-group-item d-flex justify-content-between"
+                          key={curEle._id}
+                          onClick={() => handleWinnerSpace(curEle)}
+                        >
+                          <span>{curEle.priceNumber} Price</span>
+                          <span>{curEle.price}</span>
+                          <span>{curEle.totalPerson}</span>
+                        </li>
+                      ))}
                     </ul>
 
-                    <div className="d-flex justify-content-between pb-0 px-1 pt-1">
-                      <span className="h3">4th Price </span>
-                      <span className="h3">6th Person </span>
-                    </div>
+                    {Object.keys(selectedPrice).length > 0 && (
+                      <div className="d-flex justify-content-between pb-0 px-1 pt-1">
+                        <span className="h3">
+                          {selectedPrice.priceNumber}th Price
+                        </span>
+                        <span className="h3">
+                          {selectedPrice.totalPerson - selectedPrice.fill_space}{" "}
+                          Person
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -267,6 +254,7 @@ export const ChooseWinner = () => {
                 type="button"
                 className="btn btn-relief-success mx-1 btn-block"
                 data-dismiss="modal"
+                onClick={handleWinnerConfirm}
               >
                 Confirm
               </button>

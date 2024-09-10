@@ -48,7 +48,7 @@ export const AllLotteries = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {lotteryDraw.map((curEle, index) => {
+                            {/* {lotteryDraw.map((curEle, index) => {
                               const date = new Date(
                                 curEle.drawDate
                               ).toLocaleDateString("en-GB", {
@@ -66,7 +66,7 @@ export const AllLotteries = () => {
                                   <td>{curEle.status}</td>
                                 </tr>
                               );
-                            })}
+                            })} */}
                           </tbody>
                         </table>
                       </div>

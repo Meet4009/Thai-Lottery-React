@@ -55,3 +55,41 @@ export const getAllWithdrawals = async () => {
 export const setLoser = async (id) => {
   return await axios.get(`/admin/lottery/loss-buyer/${id}`);
 };
+
+// get price
+export const getPriceList = async () => {
+  return await axios.get("/admin/lottery-price");
+};
+
+// winner
+export const setWinner = async (id, payload) => {
+  return await axios.post(`/admin/lottery/win-buyer/${id}`, payload);
+};
+
+// winner-space
+export const getWinnerSpace = async (id) => {
+  return await axios.get(`/admin/lottery/winner-space/${id}`);
+};
+
+// const axios = require('axios');
+// let data = JSON.stringify({
+//   "lottery_price_id": "66b5de95b52f24b336b7fdcc"
+// });
+
+// let config = {
+//   method: 'post',
+//   maxBodyLength: Infinity,
+//   url: 'https://thailottery.onrender.comthailottery/api/admin/lottery/win-buyer/66b77d22ae5e0b5d36cadaa6',
+//   headers: {
+//     'Content-Type': 'application/json'
+//   },
+//   data : data
+// };
+
+// axios.request(config)
+// .then((response) => {
+//   console.log(JSON.stringify(response.data));
+// })
+// .catch((error) => {
+//   console.log(error);
+// });
