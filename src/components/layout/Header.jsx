@@ -1,4 +1,4 @@
-export const Header = () => {
+export const Header = ({ name }) => {
   return (
     <>
       {/* <!-- BEGIN: Header--> */}
@@ -19,19 +19,19 @@ export const Header = () => {
                   </li>
                 </ul>
                 <h1 className="brand-text mb-0 text-bold-700">
-                  <a href="/">Dashboard</a>
+                  <a href="/">{name}</a>
                 </h1>
               </div>
               <ul className="nav navbar-nav float-right">
                 {/* <!-- minimize & maximize --> */}
-                <li className="nav-item d-none d-lg-block">
+                {/* <li className="nav-item d-none d-lg-block">
                   <a className="nav-link nav-link-expand">
                     <i className="ficon feather icon-maximize"></i>
                   </a>
-                </li>
+                </li> */}
 
                 {/* <!-- Search --> */}
-                <li className="nav-item nav-search">
+                {/* <li className="nav-item nav-search">
                   <a className="nav-link nav-link-search">
                     <i className="ficon feather icon-search"></i>
                   </a>
@@ -51,10 +51,10 @@ export const Header = () => {
                     </div>
                     <ul className="search-list search-list-main"></ul>
                   </div>
-                </li>
+                </li> */}
 
                 {/* <!-- notification --> */}
-                <li className="dropdown dropdown-notification nav-item">
+                {/* <li className="dropdown dropdown-notification nav-item">
                   <a
                     className="nav-link nav-link-label"
                     href="#"
@@ -77,7 +77,7 @@ export const Header = () => {
                     <li className="scrollable-container media-list">
                       <a
                         className="d-flex justify-content-between"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         <div className="media d-flex align-items-start">
                           <div className="media-left">
@@ -99,11 +99,11 @@ export const Header = () => {
                               9 hours ago
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         <div className="media d-flex align-items-start">
                           <div className="media-left">
@@ -125,11 +125,11 @@ export const Header = () => {
                               5 hour ago
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         <div className="media d-flex align-items-start">
                           <div className="media-left">
@@ -151,11 +151,11 @@ export const Header = () => {
                               Today
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         <div className="media d-flex align-items-start">
                           <div className="media-left">
@@ -177,11 +177,11 @@ export const Header = () => {
                               Last week
                             </time>
                           </small>
-                        </div>{" "}
+                        </div>
                       </a>
                       <a
                         className="d-flex justify-content-between"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         <div className="media d-flex align-items-start">
                           <div className="media-left">
@@ -209,13 +209,13 @@ export const Header = () => {
                     <li className="dropdown-menu-footer">
                       <a
                         className="dropdown-item p-1 text-center"
-                        href="javascript:void(0)"
+                        // href="javascript:void(0)"
                       >
                         View all notifications
                       </a>
                     </li>
                   </ul>
-                </li>
+                </li> */}
                 {/* <!-- Profile --> */}
                 <li className="dropdown dropdown-user nav-item">
                   <a
@@ -457,7 +457,7 @@ export const Header = () => {
         <div className="navbar-header">
           <ul className="nav navbar-nav flex-row">
             <li className="nav-item mr-auto">
-              <a className="navbar-brand" href="index.html">
+              <a className="navbar-brand" href="/">
                 <img
                   className="pl-50"
                   src="../app-assets/images/logo/thb_logo.svg"
@@ -475,7 +475,9 @@ export const Header = () => {
             id="main-menu-navigation"
             data-menu="menu-navigation"
           >
-            <li className="nav-item active">
+            <li
+              className={name === "Dashboard" ? `nav-item active` : `nav-item`}
+            >
               <a href="/">
                 <i className="fas fa-tachometer-alt"></i>
                 <span className="menu-title" data-i18n="Email">
@@ -483,7 +485,11 @@ export const Header = () => {
                 </span>
               </a>
             </li>
-            <li className="nav-item">
+            <li
+              className={
+                name === "User With Balance" ? `nav-item active` : `nav-item`
+              }
+            >
               <a href="/user">
                 <i className="fas fa-user"></i>
                 <span className="menu-title" data-i18n="User">
@@ -491,24 +497,36 @@ export const Header = () => {
                 </span>
               </a>
             </li>
-            <li className="nav-item">
-              <a href="alllotteries.html">
+            <li
+              className={
+                name === "All Lotteries" ? `nav-item active` : `nav-item`
+              }
+            >
+              <a href="/alllotteries">
                 <i className="fa-solid fa-ticket"></i>
                 <span className="menu-title" data-i18n="Chat">
                   All lotterys
                 </span>
               </a>
             </li>
-            <li className="nav-item">
-              <a href="allwinner.html">
+            <li
+              className={
+                name === "All Winners" ? `nav-item active` : `nav-item`
+              }
+            >
+              <a href="/allwinner">
                 <i className="fas fa-trophy"></i>
                 <span className="menu-title" data-i18n="Todo">
                   All Winner
                 </span>
               </a>
             </li>
-            <li className="nav-item">
-              <a href="chooseWinner.html">
+            <li
+              className={
+                name === "Choose to Winner" ? `nav-item active` : `nav-item`
+              }
+            >
+              <a href="/choosewinner">
                 <i className="fas fa-users"></i>
                 <span className="menu-title" data-i18n="Calender">
                   Choose to winner
@@ -516,39 +534,39 @@ export const Header = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a href="#">
+              <a href="#" data-target="#deposite">
                 <i className="fas fa-plus-circle"></i>
                 <span className="menu-title" data-i18n="Ecommerce">
                   Diposite
                 </span>
               </a>
-              <ul className="menu-content">
-                <li>
-                  <a href="pendingDeposite.html">
+              <ul className="menu-content" id="deposite">
+                <li className={name === "Pending deposits" ? "active" : ""}>
+                  <a href="/pendingdeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Shop">
                       Pending Diposite
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="approvedDeposite.html">
+                <li className={name === "Approved Deposits" ? "active" : ""}>
+                  <a href="/approveddeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Details">
                       Approved Diposite
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="rejectedDeposits.html">
+                <li className={name === "Rejected Deposits" ? "active" : ""}>
+                  <a href="/rejecteddeposite">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Wish List">
                       Rejected Diposite
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="allDeposite.html">
+                <li className={name === "All Deposits" ? "active" : ""}>
+                  <a href="/alldeposits">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Checkout">
                       All Diposite
@@ -558,39 +576,39 @@ export const Header = () => {
               </ul>
             </li>
             <li className="nav-item">
-              <a href="#">
+              <a href="#" data-target="#withdraw">
                 <i className="fas fa-minus-circle"></i>
                 <span className="menu-title" data-i18n="Ecommerce">
                   withdrawals
                 </span>
               </a>
-              <ul className="menu-content">
-                <li>
-                  <a href="pendingwithdraw.html">
+              <ul className="menu-content" id="withdraw">
+                <li className={name === "Pending withdrawals" ? "active" : ""}>
+                  <a href="/pendingwithdrawals">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Shop">
                       Pending withdrawals
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="approvedwithdraw.html">
+                <li className={name === "Approved withdrawals" ? "active" : ""}>
+                  <a href="/approvedwithdrawals">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Details">
                       Approved withdrawals
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="rejectedwithdraw.html">
+                <li className={name === "Rejected withdrawals" ? "active" : ""}>
+                  <a href="/rejectedwithdraw">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Wish List">
                       Rejected withdrawals
                     </span>
                   </a>
                 </li>
-                <li>
-                  <a href="allwithdraw.html">
+                <li className={name === "All withdrawals" ? "active" : ""}>
+                  <a href="/allwithdraw">
                     <i className="feather icon-circle"></i>
                     <span className="menu-item" data-i18n="Checkout">
                       All withdrawals

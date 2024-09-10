@@ -1,19 +1,11 @@
-// import { Outlet } from "react-router-dom";
-// import { Header } from "./Header";
+import { Outlet } from "react-router-dom";
+import { Header } from "./Header";
 
-import { Login } from "../../pages/Login";
-
-const AppLayout = () => {
-  // return (
-  //   <>
-  //     <Header />
-  //     <Outlet />
-  //   </>
-  // );
+export const AppLayout = () => {
   return (
     <>
-      <Login />
+      <Header />
+      <Outlet />
     </>
   );
 };
-export default AppLayout;

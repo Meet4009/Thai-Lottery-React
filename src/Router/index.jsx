@@ -1,18 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
 import { getSingleUserDetails } from "../API/lottery";
 import { SingleUserData } from "../components/UI/ShowSingleUserData";
-import { AllLotteries } from "../pages/AllLotteries";
 import { AllWinner } from "../pages/AllWinner";
 import { ChooseWinner } from "../pages/ChooseToWinner";
 import { Dashboard } from "../pages/Dashboard";
 import { Login } from "../pages/Login";
 import { User } from "../pages/User";
-import { lotteryApiData } from "../services/get_all_lottery_data";
-import { userApiData } from "../services/Get_User_Api_data";
 import { contactData } from "../services/User_Contact_details";
-import { dashboard } from "../API/lottery";
 import ProtectedRoute from "./ProtectedRoute";
-
+import { PendingDeposite } from "../pages/PendingDeposite";
+import { Header } from "../components/layout/Header";
+import { ApprovedDeposite } from "../pages/ApprovedDeposite";
+import { RejectedDeposits } from "../pages/RejectedDeposits";
+import { AllDeposits } from "../pages/AllDeposits";
+import { PendingWithdrawals } from "../pages/PendingWithdrawals";
+import { ApprovedWithdrawals } from "../pages/ApprovedWithdrawals";
+import { RejectedWithdrawals } from "../pages/RejectedWithdrawals";
+import { AllWithdrawals } from "../pages/AllWithdrawals";
+import { AllLotteries } from "../pages/AllLotteriesPage";
 
 const Router = createBrowserRouter([
   {
@@ -27,24 +32,26 @@ const Router = createBrowserRouter([
         path: "/",
         element: (
           <ProtectedRoute>
+            <Header name="Dashboard" />
             <Dashboard />
           </ProtectedRoute>
         ),
-        loader: dashboard,
       },
       {
         path: "/user",
         element: (
           <ProtectedRoute>
+            <Header name="User With Balance" />
             <User />
           </ProtectedRoute>
         ),
-        loader: userApiData,
+        // loader: userApiData,
       },
       {
         path: "/user/:id",
         element: (
           <ProtectedRoute>
+            <Header name="User Profile" />
             <SingleUserData />
           </ProtectedRoute>
         ),
@@ -55,15 +62,17 @@ const Router = createBrowserRouter([
         path: "/alllotteries",
         element: (
           <ProtectedRoute>
+            <Header name="All Lotteries" />
             <AllLotteries />
           </ProtectedRoute>
         ),
-        loader: lotteryApiData,
+        // loader: lotteryApiData,
       },
       {
         path: "/allwinner",
         element: (
           <ProtectedRoute>
+            <Header name="All Winners" />
             <AllWinner />
           </ProtectedRoute>
         ),
@@ -72,7 +81,83 @@ const Router = createBrowserRouter([
         path: "/choosewinner",
         element: (
           <ProtectedRoute>
+            <Header name="Choose to Winner" />
             <ChooseWinner />
+          </ProtectedRoute>
+        ),
+      },
+      // Dropdown menu "DEPOSITE"
+      {
+        path: "/pendingdeposite",
+        element: (
+          <ProtectedRoute>
+            <Header name="Pending deposits" />
+            <PendingDeposite />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/approveddeposite",
+        element: (
+          <ProtectedRoute>
+            <Header name="Approved Deposits" />
+            <ApprovedDeposite />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/rejecteddeposite",
+        element: (
+          <ProtectedRoute>
+            <Header name="Rejected Deposits" />
+            <RejectedDeposits />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/alldeposits",
+        element: (
+          <ProtectedRoute>
+            <Header name="All Deposits" />
+            <AllDeposits />
+          </ProtectedRoute>
+        ),
+      },
+
+      // Dropdown menu "WITHDRAWALS"
+      {
+        path: "/pendingwithdrawals",
+        element: (
+          <ProtectedRoute>
+            <Header name="Pending withdrawals" />
+            <PendingWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/approvedwithdrawals",
+        element: (
+          <ProtectedRoute>
+            <Header name="Approved withdrawals" />
+            <ApprovedWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/rejectedwithdraw",
+        element: (
+          <ProtectedRoute>
+            <Header name="Rejected withdrawals" />
+            <RejectedWithdrawals />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "/allwithdraw",
+        element: (
+          <ProtectedRoute>
+            <Header name="All withdrawals" />
+            <AllWithdrawals />
           </ProtectedRoute>
         ),
       },
