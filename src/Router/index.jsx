@@ -1,16 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import { getSingleUserDetails } from "../API/lottery";
 import { SingleUserData } from "../components/UI/ShowSingleUserData";
-import { AllLotteries } from "../pages/AllLotteries";
 import { AllWinner } from "../pages/AllWinner";
 import { ChooseWinner } from "../pages/ChooseToWinner";
 import { Dashboard } from "../pages/Dashboard";
 import { Login } from "../pages/Login";
 import { User } from "../pages/User";
-// import { lotteryApiData } from "../services/get_all_lottery_data";
-// import { userApiData } from "../services/Get_User_Api_data";
 import { contactData } from "../services/User_Contact_details";
-// import { dashboard } from "../API/lottery";
 import ProtectedRoute from "./ProtectedRoute";
 import { PendingDeposite } from "../pages/PendingDeposite";
 import { Header } from "../components/layout/Header";
@@ -21,6 +17,7 @@ import { PendingWithdrawals } from "../pages/PendingWithdrawals";
 import { ApprovedWithdrawals } from "../pages/ApprovedWithdrawals";
 import { RejectedWithdrawals } from "../pages/RejectedWithdrawals";
 import { AllWithdrawals } from "../pages/AllWithdrawals";
+import { AllLotteries } from "../pages/AllLotteriesPage";
 
 const Router = createBrowserRouter([
   {

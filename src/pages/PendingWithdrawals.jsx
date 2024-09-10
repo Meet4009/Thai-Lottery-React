@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
-import { getPendingWithdrawals } from "../API/payment";
-import { PendingWithdrawalsData } from "../components/UI/PendingWithdrawalData";
+import {
+  getPendingWithdrawals,
+  setApproveWithdraw,
+  setRejecteWithdraw,
+} from "../API/payment";
 
 export const PendingWithdrawals = () => {
   const [data, setData] = useState([]);
@@ -16,7 +19,41 @@ export const PendingWithdrawals = () => {
 
     mountApi();
   }, []);
-  //   console.log(data);
+  // console.log(data);
+
+  // Modal
+  const [selectedWithdrawals, setSelectedWithdrawals] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [showDate, setShowDate] = useState();
+
+  const handleActionClick = (row) => {
+    const date = new Date(row.createdAt).toLocaleDateString("en-GB", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+    setSelectedWithdrawals(row);
+    setShowModal(true);
+    setShowDate(date);
+  };
+
+  // Approve Deposite
+  const handleApproveButton = async () => {
+    try {
+      await setApproveWithdraw(selectedWithdrawals._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // Rejected Deposite
+  const handleRejecteButton = async () => {
+    try {
+      await setRejecteWithdraw(selectedWithdrawals._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="app-content content">
@@ -45,13 +82,40 @@ export const PendingWithdrawals = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {data.map((curPending, index) => {
+                            {data.map((curPending, no) => {
+                              const date = new Date(
+                                curPending.createdAt
+                              ).toLocaleDateString("en-GB", {
+                                year: "numeric",
+                                month: "2-digit",
+                                day: "2-digit",
+                              });
                               return (
-                                <PendingWithdrawalsData
-                                  key={curPending._id}
-                                  curPending={curPending}
-                                  no={index}
-                                />
+                                <tr key={curPending._id}>
+                                  <td>{no + 1}</td>
+                                  <td>
+                                    {curPending.user_id.name}
+                                    <br />
+                                    {curPending.user_id.email}
+                                  </td>
+                                  <td>{curPending.upi_id}</td>
+                                  <td>{curPending.user_id.mobile_No}</td>
+                                  <td>{date}</td>
+                                  <td>{curPending.amount}</td>
+                                  <td>
+                                    <button
+                                      type="button"
+                                      className="btn mr-1 mb-1 btn-primary btn-sm"
+                                      data-toggle="modal"
+                                      data-target="#pendingDeposite"
+                                      onClick={() =>
+                                        handleActionClick(curPending)
+                                      }
+                                    >
+                                      Action
+                                    </button>
+                                  </td>
+                                </tr>
                               );
                             })}
                           </tbody>
@@ -66,85 +130,89 @@ export const PendingWithdrawals = () => {
           {/* <!--/ Zero configuration table --> */}
 
           {/* <!-- Modal --> */}
-          <div
-            className="modal fade text-left"
-            id="pendingDeposite"
-            //   tabindex="-1"
-            role="dialog"
-            aria-labelledby="myModalLabel17"
-            aria-hidden="true"
-          >
+          {showModal && selectedWithdrawals && (
             <div
-              className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
-              role="document"
+              className="modal fade text-left"
+              id="pendingDeposite"
+              //   tabindex="-1"
+              role="dialog"
+              aria-labelledby="myModalLabel17"
+              aria-hidden="true"
             >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h4 className="modal-title" id="myModalLabel17">
-                    pending deposits
-                  </h4>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body text-black mb-0">
-                  <div className="card mb-0">
-                    <div className="card-content">
-                      <div className="card-body p-1 pb-0">
-                        <ul className="list-group">
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>User</span>
-                            <span>{data.user_id}</span>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Email</span>
-                            <span>meet@gmil.com</span>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Date</span>
-                            <span>2024-06-05 06:48 pm</span>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Amount</span>
-                            <span>2000</span>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>UTR Number</span>
-                            <span>741085296332</span>
-                          </li>
-                          <li className="list-group-item d-flex justify-content-between">
-                            <span>Status</span>
-                            <span>pending</span>
-                          </li>
-                        </ul>
+              <div
+                className="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"
+                role="document"
+              >
+                <div className="modal-content">
+                  <div className="modal-header">
+                    <h4 className="modal-title" id="myModalLabel17">
+                      pending Withdrawals
+                    </h4>
+                    <button
+                      type="button"
+                      className="close"
+                      data-dismiss="modal"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div className="modal-body text-black mb-0">
+                    <div className="card mb-0">
+                      <div className="card-content">
+                        <div className="card-body p-1 pb-0">
+                          <ul className="list-group">
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>User</span>
+                              <span>{selectedWithdrawals.user_id.name}</span>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>Email</span>
+                              <span>{selectedWithdrawals.user_id.email}</span>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>Date</span>
+                              <span>{showDate}</span>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>Amount</span>
+                              <span>{selectedWithdrawals.amount}</span>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>UPI ID</span>
+                              <span>{selectedWithdrawals.upi_id}</span>
+                            </li>
+                            <li className="list-group-item d-flex justify-content-between">
+                              <span>Status</span>
+                              <span>{selectedWithdrawals.action_status}</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-relief-success mx-1 btn-block"
-                    data-dismiss="modal"
-                  >
-                    Approve
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-relief-danger mx-1 btn-block mt-0 "
-                    data-dismiss="modal"
-                  >
-                    Reject
-                  </button>
+                  <div className="modal-footer">
+                    <button
+                      type="button"
+                      className="btn btn-relief-success mx-1 btn-block"
+                      data-dismiss="modal"
+                      onClick={handleApproveButton}
+                    >
+                      Approve
+                    </button>
+                    <button
+                      type="button"
+                      className="btn btn-relief-danger mx-1 btn-block mt-0 "
+                      data-dismiss="modal"
+                      onClick={handleRejecteButton}
+                    >
+                      Reject
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

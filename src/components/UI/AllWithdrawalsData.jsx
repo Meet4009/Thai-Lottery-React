@@ -19,11 +19,6 @@ export const AllWithdrawalsData = ({ curWithdraw, no }) => {
       <td>{date}</td>
       <td>{curWithdraw.amount}</td>
       <td>Approved</td>
-      <td>
-        <button type="button" className="btn mr-1 mb-1 btn-primary btn-sm">
-          Details
-        </button>
-      </td>
     </tr>
   );
 };

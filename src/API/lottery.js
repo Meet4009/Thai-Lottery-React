@@ -8,7 +8,7 @@ export const dashboard = async () => {
   return await axios.get("/admin/dashboard");
 };
 
-export const getUserData = async() => {
+export const getUserData = async () => {
   return await axios.get("/admin/users");
 };
 
@@ -16,11 +16,15 @@ export const getLotteriesData = () => {
   return axios.get("/admin/lottery/all-lottery");
 };
 
+export const getChooseWinnerData = () => {
+  return axios.get("/admin/lottery/choose-winner");
+};
+
 export const getSingleUserDetails = ({ params }) => {
-  let id = params.id;  
+  let id = params.id;
   return axios.get(`/admin/user/${id}`);
 };
 
-export const setUserData = (id ,payload) => {
+export const setUserData = (id, payload) => {
   return axios.put(`/admin/user/${id}`, payload);
 };

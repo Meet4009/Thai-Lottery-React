@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
-import { getRejectedDeposite } from "../API/payment";
-import { RejectedDepositeData } from "../components/UI/RejectedDepositeData";
+import { getLotteriesData } from "../API/lottery";
 
-export const RejectedDeposits = () => {
-  const [data, setData] = useState([]);
+export const AllLotteries = () => {
+  const [data, setData] = useState({});
   useEffect(() => {
     const mountApi = async () => {
       try {
-        let res = await getRejectedDeposite();
+        let res = await getLotteriesData();
         setData(res.data.data);
       } catch (error) {
         console.log(error);
@@ -16,7 +15,12 @@ export const RejectedDeposits = () => {
 
     mountApi();
   }, []);
-  //   console.log(data);
+  console.log(data);
+  const { lotteryDraw } = data;
+
+  if (lotteryDraw === undefined) {
+    return true;
+  }
 
   return (
     <div className="app-content content">
@@ -36,22 +40,31 @@ export const RejectedDeposits = () => {
                           <thead>
                             <tr>
                               <th>No.</th>
-                              <th>User</th>
-                              <th>UTR No</th>
-                              <th>Mobile no.</th>
+                              <th>Name</th>
+                              <th>Price</th>
                               <th>Date</th>
-                              <th>Amount</th>
+                              <th>Total Draw</th>
                               <th>Status</th>
                             </tr>
                           </thead>
                           <tbody>
-                            {data.map((curEle, index) => {
+                            {lotteryDraw.map((curEle, index) => {
+                              const date = new Date(
+                                curEle.drawDate
+                              ).toLocaleDateString("en-GB", {
+                                year: "numeric",
+                                month: "2-digit",
+                                day: "2-digit",
+                              });
                               return (
-                                <RejectedDepositeData
-                                  key={curEle._id}
-                                  curEle={curEle}
-                                  no={index}
-                                />
+                                <tr key={curEle._id}>
+                                  <td>{index + 1}</td>
+                                  <td>{curEle.lottery_id.name}</td>
+                                  <td>{curEle.lottery_id.price}</td>
+                                  <td>{date}</td>
+                                  <td>{curEle.lottery_id.totalDraw}</td>
+                                  <td>{curEle.status}</td>
+                                </tr>
                               );
                             })}
                           </tbody>

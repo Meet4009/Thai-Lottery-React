@@ -14,6 +14,7 @@ export const SingleUserData = () => {
   const navigate = useNavigate();
   const { data } = userData;
   const { id } = useParams();
+  console.log(id);
 
   const [userName, setUserName] = useState(data.data.user.name);
   const [userEmail, setUserEmail] = useState(data.data.user.email);

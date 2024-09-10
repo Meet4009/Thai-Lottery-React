@@ -41,7 +41,6 @@ export const AllWithdrawals = () => {
                               <th>Date</th>
                               <th>Amount</th>
                               <th>Status</th>
-                              <th>Action</th>
                             </tr>
                           </thead>
                           <tbody>

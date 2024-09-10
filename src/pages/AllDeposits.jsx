@@ -38,7 +38,7 @@ export const AllDeposits = () => {
                               <tr>
                                 <th>No.</th>
                                 <th>User</th>
-                                <th>Transaction ID</th>
+                                <th>UTR No</th>
                                 <th>Mobile no.</th>
                                 <th>Date</th>
                                 <th>Amount</th>

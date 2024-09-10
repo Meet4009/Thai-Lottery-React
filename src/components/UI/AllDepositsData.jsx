@@ -18,7 +18,7 @@ export const AllDepositsData = ({ curDepo, no }) => {
       <td>{curDepo.user_id.mobile_No}</td>
       <td>{date}</td>
       <td>{curDepo.amount}</td>
-      <td>{curDepo.status}</td>
+      <td>{curDepo.action_status}</td>
     </tr>
   );
 };

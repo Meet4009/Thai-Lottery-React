@@ -1,4 +1,44 @@
+import { useEffect, useState } from "react";
+import { getChooseWinnerData } from "../API/lottery";
+import { setLoser } from "../API/payment";
+
 export const ChooseWinner = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const mountApi = async () => {
+      try {
+        let res = await getChooseWinnerData();
+        setData(res.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    mountApi();
+  }, []);
+  console.log(data);
+
+  // Modal
+  const [selectRow, setSelectRow] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const handleActionClick = (row) => {
+    setSelectRow(row);
+    setShowModal(true);
+  };
+
+  // Loser button
+  const handleLoserButton = async () => {
+    try {
+      await setLoser(selectRow._id);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  if (data === undefined) {
+    return true;
+  }
+
   return (
     <div
       className="vertical-layout vertical-menu-modern 2-columns  navbar-floating footer-static "
@@ -33,584 +73,38 @@ export const ChooseWinner = () => {
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <td>1</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                                {/* <!-- Button trigger modal --> */}
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-
-                              <tr>
-                                <td>3</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>4</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>5</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>6</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>7</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>8</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>9</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>10</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>11</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>12</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>13</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>14</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>15</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>16</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>17</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>18</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>19</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>20</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>21</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>22</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>23</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>24</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>25</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>26</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>27</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>28</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>29</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>30</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>31</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>32</td>
-                                <td>meet Wijepala</td>
-                                <td>741025896302</td>
-                                <td>+91 78965 41230</td>
-                                <td>IND</td>
-                                <td>2024-06-05</td>
-                                <td>
-                                  <button
-                                    type="button"
-                                    className="btn mr-1 mb-1 btn-primary btn-sm"
-                                    data-toggle="modal"
-                                    data-target="#primary"
-                                  >
-                                    Action
-                                  </button>
-                                </td>
-                              </tr>
+                              {data.map((curEle, index) => {
+                                const date = new Date(
+                                  curEle.createdAt
+                                ).toLocaleDateString("en-GB", {
+                                  year: "numeric",
+                                  month: "2-digit",
+                                  day: "2-digit",
+                                });
+                                return (
+                                  <tr key={curEle._id}>
+                                    <td>{index + 1}</td>
+                                    <td>{curEle.user_id.name}</td>
+                                    <td>{curEle.ticketNumber}</td>
+                                    <td>{curEle.user_id.mobile_No}</td>
+                                    <td>{curEle.user_id.country}</td>
+                                    <td>{date}</td>
+                                    <td>
+                                      <button
+                                        type="button"
+                                        className="btn mr-1 mb-1 btn-primary btn-sm"
+                                        data-toggle="modal"
+                                        data-target="#primary"
+                                        onClick={() => {
+                                          handleActionClick(curEle);
+                                        }}
+                                      >
+                                        Action
+                                      </button>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
                             </tbody>
                           </table>
                         </div>
@@ -626,48 +120,51 @@ export const ChooseWinner = () => {
       </div>
 
       {/* <!-- Modal --> */}
-      <div
-        className="modal fade text-left"
-        id="primary"
-        // tabindex="-1"
-        role="dialog"
-        aria-labelledby="myModalLabel160"
-        aria-hidden="true"
-      >
+      {showModal && selectRow && (
         <div
-          className="modal-dialog modal-dialog-centered modal-dialog-scrollable"
-          role="document"
+          className="modal fade text-left"
+          id="primary"
+          // tabindex="-1"
+          role="dialog"
+          aria-labelledby="myModalLabel160"
+          aria-hidden="true"
         >
-          <div className="modal-content">
-            <div className="modal-header bg-primary white">
-              <h4 className="modal-title" id="myModalLabel160">
-                Ticket Number : 78946513215
-              </h4>
-            </div>
-            <div className="modal-body  text-center text-black py-5">
-              <p className="h1">Tell Us Your Decision</p>
-            </div>
-            <div className="modal-footer">
-              <button
-                type="button"
-                className="btn btn-relief-success mx-1 btn-block"
-                data-toggle="modal"
-                data-target="#winner"
-                data-dismiss="modal"
-              >
-                Winner
-              </button>
-              <button
-                type="button"
-                className="btn btn-relief-danger mx-1 btn-block mt-0 "
-                data-dismiss="modal"
-              >
-                Losser
-              </button>
+          <div
+            className="modal-dialog modal-dialog-centered modal-dialog-scrollable"
+            role="document"
+          >
+            <div className="modal-content">
+              <div className="modal-header bg-primary white">
+                <h4 className="modal-title" id="myModalLabel160">
+                  Ticket Number : {selectRow.ticketNumber}
+                </h4>
+              </div>
+              <div className="modal-body  text-center text-black py-5">
+                <p className="h1">Tell Us Your Decision</p>
+              </div>
+              <div className="modal-footer">
+                <button
+                  type="button"
+                  className="btn btn-relief-success mx-1 btn-block"
+                  data-toggle="modal"
+                  data-target="#winner"
+                  data-dismiss="modal"
+                >
+                  Winner
+                </button>
+                <button
+                  type="button"
+                  className="btn btn-relief-danger mx-1 btn-block mt-0 "
+                  data-dismiss="modal"
+                  onClick={handleLoserButton}
+                >
+                  Losser
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
 
       <div
         className="modal fade text-left"
