@@ -18,6 +18,7 @@ import { ApprovedWithdrawals } from "../pages/ApprovedWithdrawals";
 import { RejectedWithdrawals } from "../pages/RejectedWithdrawals";
 import { AllWithdrawals } from "../pages/AllWithdrawals";
 import { AllLotteries } from "../pages/AllLotteriesPage";
+import { UserDepositeHistory } from "../pages/UserDepositeHistory";
 
 const Router = createBrowserRouter([
   {
@@ -58,6 +59,17 @@ const Router = createBrowserRouter([
         loader: getSingleUserDetails,
         action: contactData,
       },
+      {
+        path: "/userdepositehistory/:id",
+        element: (
+          <ProtectedRoute>
+            <Header name="User Deposite History" />
+            <UserDepositeHistory />
+          </ProtectedRoute>
+        ),
+        // loader: getAllDepositeHistory,
+      },
+
       {
         path: "/alllotteries",
         element: (

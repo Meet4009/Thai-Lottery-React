@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getLotteriesData } from "../API/lottery";
 
 export const AllLotteries = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   useEffect(() => {
     const mountApi = async () => {
       try {
@@ -15,12 +15,6 @@ export const AllLotteries = () => {
 
     mountApi();
   }, []);
-  console.log(data);
-  const { lotteryDraw } = data;
-
-  if (lotteryDraw === undefined) {
-    return true;
-  }
 
   return (
     <div className="app-content content">
@@ -48,9 +42,9 @@ export const AllLotteries = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {/* {lotteryDraw.map((curEle, index) => {
+                            {data.map((curEle, index) => {
                               const date = new Date(
-                                curEle.drawDate
+                                curEle.activeLotteryDraw.drawDate
                               ).toLocaleDateString("en-GB", {
                                 year: "numeric",
                                 month: "2-digit",
@@ -59,14 +53,14 @@ export const AllLotteries = () => {
                               return (
                                 <tr key={curEle._id}>
                                   <td>{index + 1}</td>
-                                  <td>{curEle.lottery_id.name}</td>
-                                  <td>{curEle.lottery_id.price}</td>
+                                  <td>{curEle.name}</td>
+                                  <td>{curEle.price}</td>
                                   <td>{date}</td>
-                                  <td>{curEle.lottery_id.totalDraw}</td>
-                                  <td>{curEle.status}</td>
+                                  <td>{curEle.totalDraw}</td>
+                                  <td>{curEle.activeLotteryDraw.status}</td>
                                 </tr>
                               );
-                            })} */}
+                            })}
                           </tbody>
                         </table>
                       </div>

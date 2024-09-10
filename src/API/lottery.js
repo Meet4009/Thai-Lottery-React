@@ -28,3 +28,8 @@ export const getSingleUserDetails = ({ params }) => {
 export const setUserData = (id, payload) => {
   return axios.put(`/admin/user/${id}`, payload);
 };
+
+// User all deposite history
+// export const getAllDepositeHistory = (id) => {
+//   return axios.get(`/admin/payment/deposit-history/${id}/`);
+// };
