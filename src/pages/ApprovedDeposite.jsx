@@ -16,7 +16,6 @@ export const ApprovedDeposite = () => {
 
     mountApi();
   }, []);
-  //   console.log(data);
 
   return (
     <div className="app-content content">

@@ -6,7 +6,6 @@ import { ChooseWinner } from "../pages/ChooseToWinner";
 import { Dashboard } from "../pages/Dashboard";
 import { Login } from "../pages/Login";
 import { User } from "../pages/User";
-import { contactData } from "../services/User_Contact_details";
 import ProtectedRoute from "./ProtectedRoute";
 import { PendingDeposite } from "../pages/PendingDeposite";
 import { Header } from "../components/layout/Header";
@@ -18,12 +17,10 @@ import { ApprovedWithdrawals } from "../pages/ApprovedWithdrawals";
 import { RejectedWithdrawals } from "../pages/RejectedWithdrawals";
 import { AllWithdrawals } from "../pages/AllWithdrawals";
 import { AllLotteries } from "../pages/AllLotteriesPage";
-import { UserDepositeHistory } from "../pages/UserDepositeHistory";
 
 const Router = createBrowserRouter([
   {
     path: "/",
-    // element: <Login />,
     children: [
       {
         path: "/login",
@@ -57,19 +54,7 @@ const Router = createBrowserRouter([
           </ProtectedRoute>
         ),
         loader: getSingleUserDetails,
-        action: contactData,
       },
-      {
-        path: "/userdepositehistory/",
-        element: (
-          <ProtectedRoute>
-            <Header name="User Deposite History" />
-            <UserDepositeHistory />
-          </ProtectedRoute>
-        ),
-        // loader: getAllDepositeHistory,
-      },
-
       {
         path: "/alllotteries",
         element: (
@@ -78,7 +63,6 @@ const Router = createBrowserRouter([
             <AllLotteries />
           </ProtectedRoute>
         ),
-        // loader: lotteryApiData,
       },
       {
         path: "/allwinner",

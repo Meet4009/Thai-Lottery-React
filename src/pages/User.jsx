@@ -4,9 +4,6 @@ import { getUserData } from "../API/lottery";
 
 export const User = () => {
   document.title = "User";
-  // const userData = useLoaderData();
-  // const { data } = userData;
-  // // console.log(data);
 
   const [data, setData] = useState([]);
   useEffect(() => {

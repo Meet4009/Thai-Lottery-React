@@ -75,7 +75,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">{data.soldTicket}</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.soldTicket}
+                          </h2>
                           <br />
                           <p>Sold Ticket</p>
                         </div>
@@ -91,7 +93,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">{data.soldAmount}</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.soldAmount}
+                          </h2>
                           <br />
                           <p>Sold Amount</p>
                         </div>
@@ -125,7 +129,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">{data.winAmount}</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.winAmount}
+                          </h2>
                           <br />
                           <p>Win Amount </p>
                         </div>
@@ -143,7 +149,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">{data.totalDeposits}</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.totalDeposits}
+                          </h2>
                           <br />
                           <p>Total Deposited</p>
                         </div>
@@ -159,7 +167,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">{data.totalWithdrawals}</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.totalWithdrawals}
+                          </h2>
                           <br />
                           <p>Total Withdrawl</p>
                         </div>

@@ -16,7 +16,6 @@ export const AllWinner = () => {
 
     mountApi();
   }, []);
-  console.log(data);
 
   return (
     <div
@@ -47,12 +46,12 @@ export const AllWinner = () => {
                                 <th>Lottery</th>
                                 <th>Date</th>
                                 <th>Ticket Number</th>
-                                <th>Price</th>
+                                <th>Price No</th>
                                 <th>Win Amount</th>
                               </tr>
                             </thead>
                             <tbody>
-                              {/* {data.map((curLottery, index) => {
+                              {data.map((curLottery, index) => {
                                 return (
                                   <ShowLottery
                                     key={curLottery.ticketNumber}
@@ -60,7 +59,7 @@ export const AllWinner = () => {
                                     no={index}
                                   />
                                 );
-                              })} */}
+                              })}
                             </tbody>
                           </table>
                         </div>
@@ -74,17 +73,6 @@ export const AllWinner = () => {
           </div>
         </div>
       </div>
-      {/* <!-- EN
-  <div className="app-content content">
-      <div className="content-overlay"></div>
-      <div className="header-navbar-shadow"></div>
-      <div className="content-wrapper">
-          <div className="content-body">
-
-
-          </div>
-      </div>
-  </div>--> */}
       {/* <!-- END: Content--> */}
     </div>
   );

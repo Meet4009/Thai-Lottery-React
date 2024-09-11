@@ -6,22 +6,8 @@ export const ShowUser = ({ curUser, no }) => {
     month: "2-digit",
     day: "2-digit",
   });
-  // console.log(date);
 
-  const {
-    balance,
-    country,
-    // createdAt,
-    // currency_code,
-    email,
-    // language,
-    // loggedIn,
-    mobile_No,
-    name,
-    // role,
-    // __v,
-    _id,
-  } = curUser;
+  const { balance, country, email, mobile_No, name, _id } = curUser;
   return (
     <>
       <tr>
