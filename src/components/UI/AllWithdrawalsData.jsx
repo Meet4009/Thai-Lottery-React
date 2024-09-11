@@ -14,11 +14,11 @@ export const AllWithdrawalsData = ({ curWithdraw, no }) => {
         <br />
         {curWithdraw.user_id.email}
       </td>
-      <td>{curWithdraw.UTR}</td>
+      <td>{curWithdraw.upi_id}</td>
       <td>{curWithdraw.user_id.mobile_No}</td>
       <td>{date}</td>
       <td>{curWithdraw.amount}</td>
-      <td>Approved</td>
+      <td>{curWithdraw.action_status}</td>
     </tr>
   );
 };

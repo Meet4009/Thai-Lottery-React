@@ -70,38 +70,6 @@ export const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0"></h2>
-                          <br />
-                          <p>Email Unverified</p>
-                        </div>
-                        <div className="avatar bg-rgba-danger p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="feather icon-mail text-danger font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0"></h2>
-                          <br />
-                          <p>Mobile Unverified</p>
-                        </div>
-                        <div className="avatar bg-rgba-warning p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="feather icon-phone-missed text-warning font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div className="row">
                   <div className="col-lg-3 col-sm-6 col-12">
@@ -126,7 +94,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">0</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.soldAmount}
+                          </h2>
                           <br />
                           <p>Sold Amount</p>
                         </div>
@@ -158,7 +128,9 @@ export const Dashboard = () => {
                     <div className="card py-1">
                       <div className="card-header d-flex align-items-start pb-0">
                         <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">13000</h2>
+                          <h2 className="text-bold-700 mb-0">
+                            {data.winAmount}
+                          </h2>
                           <br />
                           <p>Win Amount</p>
                         </div>
@@ -192,62 +164,6 @@ export const Dashboard = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.approvedDeposit} */}
-                          </h2>
-                          <br />
-                          <p>Approve deposits</p>
-                        </div>
-                        <div className="avatar bg-rgba-success p-50 m-50">
-                          <div className="avatar-content">
-                            <span className="material-symbols-outlined text-success">
-                              bookmark_check
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.rejectedDeposit} */}
-                          </h2>
-                          <br />
-                          <p>Rejected Deposits</p>
-                        </div>
-                        <div className="avatar bg-rgba-danger p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="fas fa-close text-danger font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.pendingDeposit} */}
-                          </h2>
-                          <br />
-                          <p>Pending Deposits</p>
-                        </div>
-                        <div className="avatar bg-rgba-warning p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="feather icon-alert-octagon text-warning font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div className="row">
                   <div className="col-lg-3 col-sm-6 col-12">
@@ -263,62 +179,6 @@ export const Dashboard = () => {
                         <div className="avatar bg-rgba-primary p-50 m-50">
                           <div className="avatar-content">
                             <i className="feather icon-log-out text-primary font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.approvedWithdrawal} */}
-                          </h2>
-                          <br />
-                          <p>Approve Withdrawal</p>
-                        </div>
-                        <div className="avatar bg-rgba-success p-50 m-50">
-                          <div className="avatar-content">
-                            <span className="material-symbols-outlined text-success">
-                              bookmark_check
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.rejectedWithdrawal} */}
-                          </h2>
-                          <br />
-                          <p>Rejected Withdrawals</p>
-                        </div>
-                        <div className="avatar bg-rgba-danger p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="fas fa-close text-danger font-medium-5"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="col-lg-3 col-sm-6 col-12">
-                    <div className="card py-1">
-                      <div className="card-header d-flex align-items-start pb-0">
-                        <div className="ml-50">
-                          <h2 className="text-bold-700 mb-0">
-                            {/* {data.pendingWithdraw} */}
-                          </h2>
-                          <br />
-                          <p>Pending Withdrawals</p>
-                        </div>
-                        <div className="avatar bg-rgba-warning p-50 m-50">
-                          <div className="avatar-content">
-                            <i className="feather icon-alert-octagon text-warning font-medium-5"></i>
                           </div>
                         </div>
                       </div>

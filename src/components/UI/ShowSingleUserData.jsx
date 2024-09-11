@@ -14,6 +14,7 @@ export const SingleUserData = () => {
   const navigate = useNavigate();
   const { data } = userData;
   const { id } = useParams();
+  // console.log(id);
 
   const [userName, setUserName] = useState(data.data.user.name);
   const [userEmail, setUserEmail] = useState(data.data.user.email);
@@ -81,7 +82,12 @@ export const SingleUserData = () => {
                           <p>deposits</p>
                         </div>
                         <div className="avatar bg-rgba-success p-50">
-                          <NavLink to="userDepositeHistory.html">
+                          <NavLink
+                            to={{
+                              pathname: "/userdepositehistory",
+                              state: { id: id },
+                            }}
+                          >
                             <div className="avatar-content">
                               <i className="feather icon-log-in text-success font-medium-5"></i>
                             </div>
