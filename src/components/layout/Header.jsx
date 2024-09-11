@@ -1,4 +1,19 @@
+import { logout } from "../../API/auth";
+
 export const Header = ({ name }) => {
+  // Logout button
+  const handleLogoutBtn = async () => {
+    try {
+      const data = await logout();
+      console.log("resresres", data);
+    } catch (error) {
+      console.log(error);
+    }
+
+    localStorage.removeItem("user_details");
+    localStorage.removeItem("token");
+    window.location.reload();
+  };
   return (
     <>
       {/* <!-- BEGIN: Header--> */}
@@ -242,7 +257,11 @@ export const Header = ({ name }) => {
                       <i className="feather icon-user"></i> Edit Profile
                     </a>
                     <div className="dropdown-divider"></div>
-                    <a className="dropdown-item" href="#">
+                    <a
+                      className="dropdown-item"
+                      href="#"
+                      onClick={handleLogoutBtn}
+                    >
                       <i className="feather icon-power"></i> Logout
                     </a>
                   </div>

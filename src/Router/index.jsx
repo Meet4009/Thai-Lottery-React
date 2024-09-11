@@ -60,7 +60,7 @@ const Router = createBrowserRouter([
         action: contactData,
       },
       {
-        path: "/userdepositehistory/:id",
+        path: "/userdepositehistory/",
         element: (
           <ProtectedRoute>
             <Header name="User Deposite History" />
