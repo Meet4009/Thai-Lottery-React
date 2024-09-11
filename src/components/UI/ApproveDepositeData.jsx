@@ -1,6 +1,5 @@
 export const ApproveDepositeData = ({ curEle, no }) => {
   const { user_id } = curEle;
-  // console.log(curEle);
 
   const date = new Date(curEle.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",

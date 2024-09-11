@@ -1,5 +1,4 @@
 export const AllWithdrawalsData = ({ curWithdraw, no }) => {
-  // console.log(curWithdraw);
   const date = new Date(curWithdraw.createdAt).toLocaleDateString("en-GB", {
     year: "numeric",
     month: "2-digit",

@@ -1,11 +1,5 @@
 import { useState } from "react";
-import {
-  Form,
-  NavLink,
-  useLoaderData,
-  useParams,
-  useNavigate,
-} from "react-router-dom";
+import { Form, useLoaderData, useParams, useNavigate } from "react-router-dom";
 import { setUserData } from "../../API/lottery";
 
 export const SingleUserData = () => {
@@ -37,6 +31,7 @@ export const SingleUserData = () => {
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   };
 
   return (
@@ -82,16 +77,15 @@ export const SingleUserData = () => {
                           <p>deposits</p>
                         </div>
                         <div className="avatar bg-rgba-success p-50">
-                          <NavLink
-                            to={{
-                              pathname: "/userdepositehistory",
-                              state: { id: id },
-                            }}
+                          <div className="avatar-content">
+                            <i className="feather icon-log-in text-success font-medium-5"></i>
+                          </div>
+                          {/* <NavLink to="userdepositehistory.html"
                           >
                             <div className="avatar-content">
                               <i className="feather icon-log-in text-success font-medium-5"></i>
                             </div>
-                          </NavLink>
+                          </NavLink> */}
                         </div>
                       </div>
                     </div>
@@ -106,11 +100,14 @@ export const SingleUserData = () => {
                           <p>Wiithdraws</p>
                         </div>
                         <div className="avatar bg-rgba-danger p-50 m-0">
-                          <NavLink to="userAllWithdraw.html">
+                          <div className="avatar-content">
+                            <i className="feather icon-log-out text-danger font-medium-5"></i>
+                          </div>
+                          {/* <NavLink to="userAllWithdraw.html">
                             <div className="avatar-content">
                               <i className="feather icon-log-out text-danger font-medium-5"></i>
                             </div>
-                          </NavLink>
+                          </NavLink> */}
                         </div>
                       </div>
                     </div>
@@ -125,11 +122,14 @@ export const SingleUserData = () => {
                           <p>Tickets</p>
                         </div>
                         <div className="avatar bg-rgba-warning p-50 m-0">
-                          <NavLink to="userTickets.html">
+                          <div className="avatar-content">
+                            <i className="bi bi-ticket  text-warning font-medium-5"></i>
+                          </div>
+                          {/* <NavLink to="userTickets.html">
                             <div className="avatar-content">
                               <i className="bi bi-ticket  text-warning font-medium-5"></i>
                             </div>
-                          </NavLink>
+                          </NavLink> */}
                         </div>
                       </div>
                     </div>

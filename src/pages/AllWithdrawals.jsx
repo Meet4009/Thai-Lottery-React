@@ -16,7 +16,6 @@ export const AllWithdrawals = () => {
 
     mountApi();
   }, []);
-  //   console.log(data);
   return (
     <div className="app-content content">
       <div className="content-overlay"></div>

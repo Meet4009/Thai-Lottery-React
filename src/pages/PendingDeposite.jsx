@@ -43,6 +43,7 @@ export const PendingDeposite = () => {
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   };
 
   // Rejected Deposite
@@ -52,6 +53,7 @@ export const PendingDeposite = () => {
     } catch (error) {
       console.log(error);
     }
+    window.location.reload();
   };
 
   return (

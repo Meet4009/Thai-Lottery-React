@@ -16,7 +16,6 @@ export const ChooseWinner = () => {
 
     mountApi();
   }, []);
-  // console.log(data);
 
   // Modal
   const [selectRow, setSelectRow] = useState({});
@@ -54,9 +53,9 @@ export const ChooseWinner = () => {
       lottery_price_id: selectedPrice._id,
     };
     await setWinner(selectRow._id, payload);
-  };
 
-  console.log(prices);
+    window.location.reload();
+  };
 
   if (data === undefined) {
     return true;

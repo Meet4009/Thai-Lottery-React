@@ -16,7 +16,6 @@ export const RejectedDeposits = () => {
 
     mountApi();
   }, []);
-  //   console.log(data);
 
   return (
     <div className="app-content content">

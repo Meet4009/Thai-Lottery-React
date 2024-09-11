@@ -40,7 +40,7 @@ export const Login = () => {
           <div className="content-wrapper">
             <div className="content-header row"></div>
             <div className="content-body">
-              <section className="row flexbox-container">
+              <section className="row flexbox-container ml-4">
                 <div className="col-xl-8 col-11 d-flex justify-content-center">
                   <div className="card bg-authentication rounded-0 mb-0">
                     <div className="row m-0">
