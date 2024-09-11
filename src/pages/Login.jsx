@@ -46,7 +46,7 @@ export const Login = () => {
                     <div className="row m-0">
                       <div className="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
                         <img
-                          src="../../../app-assets/images/pages/login.png"
+                          src="../../app-assets/images/pages/login.png"
                           alt="branding logo"
                         />
                       </div>
@@ -120,10 +120,7 @@ export const Login = () => {
                                     </fieldset>
                                   </div>
                                   <div className="text-right">
-                                    <a
-                                      href="auth-forgot-password.html"
-                                      className="card-link"
-                                    >
+                                    <a href="#" className="card-link">
                                       Forgot Password?
                                     </a>
                                   </div>
