@@ -1,4 +1,4 @@
-import { ShowUser } from "../components/UI/ShowuserData";
+import { ShowUser } from "../components/UI/ShowUserData";
 import { useEffect, useState } from "react";
 import { getUserData } from "../API/lottery";
 
