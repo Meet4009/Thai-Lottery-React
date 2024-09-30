@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const customAxios = axios.create({
-  baseURL: "https://thailottery.onrender.com/api",
+  // baseURL: "https://thailottery.onrender.com/api",
+  baseURL: "https://thailottery.cloud",
 });
 
 const requestHandler = (request) => {
